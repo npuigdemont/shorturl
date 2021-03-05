@@ -23,3 +23,9 @@ app.listen(port, function() {
   console.log(`Listening on port ${port}`);
 });
 
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true,
+useFindAndModify: false});
+console.log(mongoose.connection.readyState);
+
+const { Schema, model }= mongoose
