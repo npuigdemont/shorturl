@@ -16,6 +16,13 @@
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.17"
   },
+  "engines": {
+    "node": "10.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hyperdev.com/#!/project/welcome-project"
+  },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.4"
