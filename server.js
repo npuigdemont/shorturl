@@ -25,14 +25,12 @@ app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
 
-app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
-});
-
 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true,
 useFindAndModify: false});
 console.log(mongoose.connection.readyState);
+
+//uses 
 
 var Schema = mongoose.Schema;
 var urlShortnerSchema = new Schema({
@@ -95,6 +93,3 @@ app.get("/api/shorturl/:shorturl", function(req, res) {
 
 app.listen(port, function() {
  console.log(`Listening on port ${port}`); });
-
-//app.listen(port, function() {
-//  console.log("Node.js listening ..." + port); });
