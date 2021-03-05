@@ -71,3 +71,30 @@ app.post("/api/shorturl/new", function(req, res) {
 });
 
 //out url
+app.get("/api/shorturl/:shorturl", function(req, res) {
+  let shorturl = req.params.shorturl;
+  console.log(shorturl);
+  let urlId;
+  try {
+    urlId = mongoose.Types.ObjectId(shorturl);
+    console.log(urlId);
+  } catch (err) {
+    res.json({ error: "invalid URL" });
+    console.log("error" + urlId);
+  }
+  let completeurl = urlShortner.findById(urlId, (err, data) => {
+    if (err) {
+      res.json({ error: "invalid URL" });
+      console.log("error" + urlId);
+    } else {
+      res.status(301).redirect(data.url);
+      console.log("Success" + urlId);
+    }
+  });
+});
+
+app.listen(port, function() {
+ console.log(`Listening on port ${port}`); });
+
+//app.listen(port, function() {
+//  console.log("Node.js listening ..." + port); });
